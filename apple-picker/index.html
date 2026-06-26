@@ -1,0 +1,159 @@
+<!DOCTYPE html>
+<html lang="ko">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Apple Picker — Unity 게임 프로젝트</title>
+    <link rel="stylesheet" href="style.css">
+</head>
+<body>
+    <div class="container">
+        <!-- Logos -->
+        <div class="logos">
+            <img src="images/logo_unity.png" alt="Unity">
+            <img src="images/logo_school.png" alt="한양대학교 ERICA">
+            <img src="images/logo_csharp.svg" alt="C#">
+        </div>
+
+        <!-- Title -->
+        <div class="title-section">
+            <h1>Apple Picker</h1>
+            <div class="subtitle">Unity로 제작한 클래식 아케이드 사과 받기 게임</div>
+            <div class="authors">윤태웅</div>
+            <div class="affiliation">한양대학교 ERICA 스마트융합공학부 스마트ICT융합전공<br>2학년 1학기 C#게임프로그래밍 수업 과제</div>
+            <div class="badges">
+                <span class="badge">Unity 6000.3</span>
+                <span class="badge">C#</span>
+                <span class="badge">uGUI</span>
+                <span class="badge">개인 프로젝트</span>
+            </div>
+        </div>
+
+        <!-- About -->
+        <div class="section">
+            <h2>About Project</h2>
+            <p class="abstract">
+                본 프로젝트는 Unity로 제작한 클래식 아케이드 스타일의 사과 받기 게임입니다.
+                화면 상단에서 좌우로 움직이는 사과나무가 떨어뜨리는 사과를 마우스로 조작하는 바구니로 받아 점수를 획득합니다.
+                사과를 놓칠 때마다 바구니가 하나씩 사라지며, 모든 바구니를 잃으면 게임이 재시작됩니다.
+                PlayerPrefs를 활용한 최고 점수 저장 기능으로 게임 세션 간 기록이 유지됩니다.
+            </p>
+
+            <h3>게임 방법</h3>
+            <ol class="howto">
+                <li>사과나무가 화면 상단에서 좌우로 움직이며 일정 주기로 사과를 떨어뜨립니다.</li>
+                <li>마우스를 좌우로 움직여 3개의 바구니로 사과를 받습니다.</li>
+                <li>사과 하나를 받을 때마다 <strong>100점</strong>을 획득합니다.</li>
+                <li>사과를 놓치면 떨어지던 모든 사과가 사라지고 바구니가 하나 제거됩니다.</li>
+                <li>바구니를 모두 잃으면 게임이 처음부터 다시 시작됩니다.</li>
+            </ol>
+        </div>
+
+        <!-- Progress (weekly screenshots) -->
+        <div class="section">
+            <h2>Progress</h2>
+            <p class="section-desc">수업 진행에 따른 주차별 제출 화면입니다.</p>
+            <div class="shot-grid">
+                <div class="shot-item">
+                    <img src="images/week6.png" alt="6주차 진행 화면">
+                    <div class="shot-caption">6주차 — 사과나무 · 바구니 기본 구성</div>
+                </div>
+                <div class="shot-item">
+                    <img src="images/week8.png" alt="8주차 진행 화면">
+                    <div class="shot-caption">8주차 — 점수 · 최고 점수 UI, 바구니 3개</div>
+                </div>
+                <div class="shot-item">
+                    <img src="images/week9.png" alt="9주차 진행 화면">
+                    <div class="shot-caption">9주차 — 미스 시 바구니 제거 · 게임 오버 로직</div>
+                </div>
+            </div>
+        </div>
+
+        <!-- Implementation -->
+        <div class="section">
+            <h2>Implementation</h2>
+            <p class="section-desc">주요 스크립트 구성입니다.</p>
+            <div class="table-wrap">
+                <table>
+                    <thead>
+                        <tr><th>스크립트</th><th>설명</th></tr>
+                    </thead>
+                    <tbody>
+                        <tr><td><code>AppleTree.cs</code></td><td>사과나무의 좌우 이동, 확률 기반 방향 전환, Invoke를 활용한 주기적 사과 생성</td></tr>
+                        <tr><td><code>Apple.cs</code></td><td>사과 낙하 및 화면 이탈 시 제거 처리</td></tr>
+                        <tr><td><code>Basket.cs</code></td><td>ScreenToWorldPoint 기반 마우스 추적 이동, 충돌 판정 및 점수 획득</td></tr>
+                        <tr><td><code>ApplePicker.cs</code></td><td>게임 매니저 — 바구니 생성/제거, 게임 오버 및 씬 재시작 관리</td></tr>
+                        <tr><td><code>HighScore.cs</code></td><td>PlayerPrefs를 활용한 최고 점수 영구 저장 및 UI 표시</td></tr>
+                    </tbody>
+                </table>
+            </div>
+        </div>
+
+        <!-- Tech Stack -->
+        <div class="section">
+            <h2>Tech Stack</h2>
+            <div class="tech-grid">
+                <div class="tech-block">
+                    <h3>개발 환경</h3>
+                    <ul>
+                        <li><strong>Engine</strong> · Unity 6 (6000.3.11f1)</li>
+                        <li><strong>언어</strong> · C#</li>
+                        <li><strong>IDE</strong> · Visual Studio</li>
+                    </ul>
+                </div>
+                <div class="tech-block">
+                    <h3>핵심 기술</h3>
+                    <ul>
+                        <li><strong>GameObject 관리</strong> · Prefab Instantiate/Destroy, Tag 기반 객체 검색</li>
+                        <li><strong>Input</strong> · ScreenToWorldPoint 마우스 좌표 변환</li>
+                        <li><strong>충돌 처리</strong> · OnCollisionEnter 기반 사과-바구니 충돌 판정</li>
+                        <li><strong>데이터 저장</strong> · PlayerPrefs 최고 점수 영속화</li>
+                        <li><strong>UI</strong> · uGUI Text 기반 실시간 점수 표시</li>
+                        <li><strong>씬 관리</strong> · SceneManager를 활용한 게임 재시작</li>
+                    </ul>
+                </div>
+            </div>
+        </div>
+
+        <!-- Resources -->
+        <div class="section">
+            <h2>Resources</h2>
+            <div class="resources">
+                <a href="https://github.com/TaeWoongYoun/ApplePicker" class="resource-link" target="_blank" rel="noopener">
+                    <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24">
+                        <path d="M12,2A10,10 0 0,0 2,12C2,16.42 4.87,20.17 8.84,21.5C9.34,21.58 9.5,21.27 9.5,21C9.5,20.77 9.5,20.14 9.5,19.31C6.73,19.91 6.14,17.97 6.14,17.97C5.68,16.81 5.03,16.5 5.03,16.5C4.12,15.88 5.1,15.9 5.1,15.9C6.1,15.97 6.63,16.93 6.63,16.93C7.5,18.45 8.97,18 9.54,17.76C9.63,17.11 9.89,16.67 10.17,16.42C7.95,16.17 5.62,15.31 5.62,11.5C5.62,10.39 6,9.5 6.65,8.79C6.55,8.54 6.2,7.5 6.75,6.15C6.75,6.15 7.59,5.88 9.5,7.17C10.29,6.95 11.15,6.84 12,6.84C12.85,6.84 13.71,6.95 14.5,7.17C16.41,5.88 17.25,6.15 17.25,6.15C17.8,7.5 17.45,8.54 17.35,8.79C18,9.5 18.38,10.39 18.38,11.5C18.38,15.32 16.04,16.16 13.81,16.41C14.17,16.72 14.5,17.33 14.5,18.26C14.5,19.6 14.5,20.68 14.5,21C14.5,21.27 14.66,21.59 15.17,21.5C19.14,20.16 22,16.42 22,12A10,10 0 0,0 12,2Z"/>
+                    </svg>
+                    <span>GitHub</span>
+                </a>
+            </div>
+        </div>
+
+        <!-- Related Projects -->
+        <div class="section">
+            <h2>Related Projects</h2>
+            <p class="section-desc">같은 C#게임프로그래밍 수업에서 진행한 다른 작업입니다.</p>
+            <div class="resources">
+                <a href="https://github.com/TaeWoongYoun/Slingshot" class="resource-link" target="_blank" rel="noopener">
+                    <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24">
+                        <path d="M12,2A10,10 0 0,0 2,12C2,16.42 4.87,20.17 8.84,21.5C9.34,21.58 9.5,21.27 9.5,21C9.5,20.77 9.5,20.14 9.5,19.31C6.73,19.91 6.14,17.97 6.14,17.97C5.68,16.81 5.03,16.5 5.03,16.5C4.12,15.88 5.1,15.9 5.1,15.9C6.1,15.97 6.63,16.93 6.63,16.93C7.5,18.45 8.97,18 9.54,17.76C9.63,17.11 9.89,16.67 10.17,16.42C7.95,16.17 5.62,15.31 5.62,11.5C5.62,10.39 6,9.5 6.65,8.79C6.55,8.54 6.2,7.5 6.75,6.15C6.75,6.15 7.59,5.88 9.5,7.17C10.29,6.95 11.15,6.84 12,6.84C12.85,6.84 13.71,6.95 14.5,7.17C16.41,5.88 17.25,6.15 17.25,6.15C17.8,7.5 17.45,8.54 17.35,8.79C18,9.5 18.38,10.39 18.38,11.5C18.38,15.32 16.04,16.16 13.81,16.41C14.17,16.72 14.5,17.33 14.5,18.26C14.5,19.6 14.5,20.68 14.5,21C14.5,21.27 14.66,21.59 15.17,21.5C19.14,20.16 22,16.42 22,12A10,10 0 0,0 12,2Z"/>
+                    </svg>
+                    <span>Slingshot (11~13주차)</span>
+                </a>
+                <a href="https://cs-gamedev.github.io/portfolio/" class="resource-link" target="_blank" rel="noopener">
+                    <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24">
+                        <path d="M16.36,14C16.44,13.34 16.5,12.68 16.5,12C16.5,11.32 16.44,10.66 16.36,10H19.74C19.9,10.64 20,11.31 20,12C20,12.69 19.9,13.36 19.74,14M14.59,19.56C15.19,18.45 15.65,17.25 15.97,16H18.92C17.96,17.65 16.43,18.93 14.59,19.56M14.34,14H9.66C9.56,13.34 9.5,12.68 9.5,12C9.5,11.32 9.56,10.65 9.66,10H14.34C14.43,10.65 14.5,11.32 14.5,12C14.5,12.68 14.43,13.34 14.34,14M12,19.96C11.17,18.76 10.5,17.43 10.09,16H13.91C13.5,17.43 12.83,18.76 12,19.96M8,8H5.08C6.03,6.34 7.57,5.06 9.4,4.44C8.8,5.55 8.35,6.75 8,8M5.08,16H8C8.35,17.25 8.8,18.45 9.4,19.56C7.57,18.93 6.03,17.65 5.08,16M4.26,14C4.1,13.36 4,12.69 4,12C4,11.31 4.1,10.64 4.26,10H7.64C7.56,10.66 7.5,11.32 7.5,12C7.5,12.68 7.56,13.34 7.64,14M12,4.03C12.83,5.23 13.5,6.57 13.91,8H10.09C10.5,6.57 11.17,5.23 12,4.03M18.92,8H15.97C15.65,6.75 15.19,5.55 14.59,4.44C16.43,5.07 17.96,6.34 18.92,8M12,2C6.47,2 2,6.5 2,12A10,10 0 0,0 12,22A10,10 0 0,0 22,12A10,10 0 0,0 12,2Z"/>
+                    </svg>
+                    <span>ROBOT UPRISING (팀 포트폴리오)</span>
+                </a>
+            </div>
+        </div>
+
+        <!-- Contact -->
+        <div class="contact">
+            <h2>Contact</h2>
+            <p>문의사항은 아래 이메일로 연락주시기 바랍니다.</p>
+            <a href="mailto:taewoong25@hanyang.ac.kr">윤태웅 · taewoong25@hanyang.ac.kr</a>
+        </div>
+    </div>
+</body>
+</html>
