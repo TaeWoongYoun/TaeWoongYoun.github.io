@@ -1,0 +1,137 @@
+<!DOCTYPE html>
+<html lang="ko">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>R 데이터 분석 — AI+X: R-Py컴퓨팅 Homework 2</title>
+    <link rel="stylesheet" href="../base.css">
+</head>
+<body>
+    <div class="container">
+        <!-- Logos -->
+        <div class="logos">
+            <img src="logo/logo_r.png" alt="R">
+            <img src="logo/logo_school.png" alt="한양대학교 ERICA">
+        </div>
+
+        <!-- Title -->
+        <div class="title-section">
+            <h1>R 데이터 분석 (Homework 2)</h1>
+            <div class="subtitle">dplyr·선형 회귀와 시뮬레이션을 활용한 데이터 분석 과제</div>
+            <div class="authors">윤태웅</div>
+            <div class="affiliation">한양대학교 ERICA 스마트융합공학부 스마트ICT융합전공<br>AI+X: R-Py컴퓨팅 · Homework 2</div>
+            <div class="badges">
+                <span class="badge">R</span>
+                <span class="badge">dplyr</span>
+                <span class="badge">Linear Regression</span>
+                <span class="badge">Simulation</span>
+                <span class="badge">개인 과제</span>
+            </div>
+        </div>
+
+        <!-- About -->
+        <div class="section">
+            <h2>About Project</h2>
+            <p class="abstract">
+                R을 활용한 데이터 분석 과제입니다. PART 1에서는 <code>mtcars</code> 데이터에 대해
+                dplyr로 그룹을 나누고 요약 통계량과 선형 회귀 모형을 추정하며 수치형·팩터형 변수의
+                회귀 차이를 비교했습니다. PART 2에서는 기하 브라운 운동(GBM)을 활용한 주가 경로
+                시뮬레이션으로 통계 시뮬레이션 기법을 다뤘습니다.
+            </p>
+
+            <h3>다룬 내용</h3>
+            <ul class="bullets">
+                <li><strong>요약 통계량</strong> · mtcars / high_mpg / low_mpg 그룹별 summary</li>
+                <li><strong>apply 활용</strong> · 변수별 평균·표준편차 계산 및 summary 결과와 일치 검증</li>
+                <li><strong>선형 회귀</strong> · mpg ~ cyl, mpg ~ cyl + gear 모형 추정 및 R² 비교</li>
+                <li><strong>팩터형 회귀</strong> · gear_factor 더미변수화로 수치형 vs 팩터형 회귀 차이 분석</li>
+                <li><strong>시뮬레이션</strong> · 기하 브라운 운동으로 10,000개 주가 경로 생성 (S0=100, σ=0.1, rf=0.04)</li>
+            </ul>
+        </div>
+
+        <!-- Results -->
+        <div class="section">
+            <h2>Results</h2>
+            <p class="section-desc">과제 수행 결과입니다.</p>
+            <div class="shot-grid two-col">
+                <div class="shot-item">
+                    <img src="images/test1-2.png" alt="1-2 요약 통계량">
+                    <div class="shot-caption">1-2 · 그룹별 요약 통계량 (summary)</div>
+                </div>
+                <div class="shot-item">
+                    <img src="images/test1-3.png" alt="1-3 평균과 표준편차">
+                    <div class="shot-caption">1-3 · apply 기반 평균·표준편차</div>
+                </div>
+                <div class="shot-item">
+                    <img src="images/test1-4.png" alt="1-4 선형 회귀 mpg~cyl">
+                    <div class="shot-caption">1-4 · 선형 회귀 (mpg ~ cyl)</div>
+                </div>
+                <div class="shot-item">
+                    <img src="images/test1-5.png" alt="1-5 R제곱 비교">
+                    <div class="shot-caption">1-5 · 그룹별 회귀 및 R² 비교</div>
+                </div>
+                <div class="shot-item">
+                    <img src="images/test1-6.png" alt="1-6 다중 회귀">
+                    <div class="shot-caption">1-6 · 선형 회귀 (mpg ~ cyl + gear)</div>
+                </div>
+                <div class="shot-item">
+                    <img src="images/test1-7.png" alt="1-7 gear_factor 생성">
+                    <div class="shot-caption">1-7 · gear_factor 팩터형 변수 생성</div>
+                </div>
+                <div class="shot-item">
+                    <img src="images/test1-8.png" alt="1-8 팩터형 회귀">
+                    <div class="shot-caption">1-8 · 팩터형 회귀 (mpg ~ cyl + gear_factor)</div>
+                </div>
+                <div class="shot-item">
+                    <img src="images/test2.png" alt="PART2 시뮬레이션">
+                    <div class="shot-caption">PART 2 · 기하 브라운 운동 주가 경로 시뮬레이션</div>
+                </div>
+            </div>
+        </div>
+
+        <!-- Key Findings -->
+        <div class="section">
+            <h2>Key Findings</h2>
+            <div class="table-wrap">
+                <table>
+                    <thead>
+                        <tr><th>항목</th><th>결과</th></tr>
+                    </thead>
+                    <tbody>
+                        <tr><td>R² 비교</td><td>mtcars 0.7262 · high_mpg 0.6744 · low_mpg 0 — mtcars 예측력 최상</td></tr>
+                        <tr><td>수치형 vs 팩터형</td><td>수치형은 계수 1개로 선형 가정, 팩터형은 기준수준 대비 수준별 효과를 더미로 추정</td></tr>
+                        <tr><td>시뮬레이션 결과</td><td>ST 평균 100.5158 · ST 분산 11.9474</td></tr>
+                    </tbody>
+                </table>
+            </div>
+        </div>
+
+        <!-- Resources -->
+        <div class="section">
+            <h2>Resources</h2>
+            <div class="resources">
+                <a href="https://github.com/TaeWoongYoun/R-DataAnalysis" class="resource-link">
+                    <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24">
+                        <path d="M12,2A10,10 0 0,0 2,12C2,16.42 4.87,20.17 8.84,21.5C9.34,21.58 9.5,21.27 9.5,21C9.5,20.77 9.5,20.14 9.5,19.31C6.73,19.91 6.14,17.97 6.14,17.97C5.68,16.81 5.03,16.5 5.03,16.5C4.12,15.88 5.1,15.9 5.1,15.9C6.1,15.97 6.63,16.93 6.63,16.93C7.5,18.45 8.97,18 9.54,17.76C9.63,17.11 9.89,16.67 10.17,16.42C7.95,16.17 5.62,15.31 5.62,11.5C5.62,10.39 6,9.5 6.65,8.79C6.55,8.54 6.2,7.5 6.75,6.15C6.75,6.15 7.59,5.88 9.5,7.17C10.29,6.95 11.15,6.84 12,6.84C12.85,6.84 13.71,6.95 14.5,7.17C16.41,5.88 17.25,6.15 17.25,6.15C17.8,7.5 17.45,8.54 17.35,8.79C18,9.5 18.38,10.39 18.38,11.5C18.38,15.32 16.04,16.16 13.81,16.41C14.17,16.72 14.5,17.33 14.5,18.26C14.5,19.6 14.5,20.68 14.5,21C14.5,21.27 14.66,21.59 15.17,21.5C19.14,20.16 22,16.42 22,12A10,10 0 0,0 12,2Z"/>
+                    </svg>
+                    <span>GitHub</span>
+                </a>
+                <a href="../" class="resource-link">
+                    <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24">
+                        <path d="M10,20V14H14V20H19V12H22L12,3L2,12H5V20H10Z"/>
+                    </svg>
+                    <span>전체 프로젝트 목록</span>
+                </a>
+            </div>
+        </div>
+
+        <!-- Contact -->
+        <div class="contact">
+            <h2>Contact</h2>
+            <p>문의사항은 아래 이메일로 연락주시기 바랍니다.</p>
+            <a href="mailto:taewoong25@hanyang.ac.kr">윤태웅 · taewoong25@hanyang.ac.kr</a>
+        </div>
+    </div>
+    <script src="../lightbox.js"></script>
+</body>
+</html>
